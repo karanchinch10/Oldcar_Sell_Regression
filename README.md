@@ -5,7 +5,7 @@ As Now a day we know many peoples are going to buy second hand car instaed of bu
 ![Semantic description of image](used_car.jpg "Image Title")
 ## Content
 This Dataset contains information of 5000+ old cars with different models and features like their Year (₹), Name of the Company, KM driven, Power, Fuel Type and Location.
-This Dataset contains total 13 features
+This Dataset contains total 12 features
 - Name      
 - Location  
 - Year
