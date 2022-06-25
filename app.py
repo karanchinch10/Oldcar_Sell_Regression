@@ -1,0 +1,300 @@
+import streamlit as st
+import pandas as pd
+import numpy as np
+import pickle
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import LabelEncoder
+from PIL import Image
+
+
+model = pickle.load(open('mlmodel.pkl','rb'))
+st.title("Old Car Selling App")
+st.image("car2.jpg")
+
+
+dict_car = {'Audi A4': 0,
+ 'Audi A6': 1,
+ 'Audi Q3': 2,
+ 'Audi Q5': 3,
+ 'Audi Q7': 4,
+ 'BMW 3': 5,
+ 'BMW 5': 6,
+ 'BMW 7': 7,
+ 'BMW X1': 8,
+ 'BMW X3': 9,
+ 'BMW X5': 10,
+ 'Chevrolet Aveo': 11,
+ 'Chevrolet Beat': 12,
+ 'Chevrolet Cruze': 13,
+ 'Chevrolet Optra': 14,
+ 'Chevrolet Spark': 15,
+ 'Fiat Linea': 16,
+ 'Ford EcoSport': 17,
+ 'Ford Ecosport': 18,
+ 'Ford Endeavour': 19,
+ 'Ford Fiesta': 20,
+ 'Ford Figo': 21,
+ 'Ford Ikon': 22,
+ 'Honda Accord': 23,
+ 'Honda Amaze': 24,
+ 'Honda Brio': 25,
+ 'Honda CR-V': 26,
+ 'Honda City': 27,
+ 'Honda Civic': 28,
+ 'Honda Jazz': 29,
+ 'Honda Mobilio': 30,
+ 'Hyundai Accent': 31,
+ 'Hyundai Creta': 32,
+ 'Hyundai EON': 33,
+ 'Hyundai Elantra': 34,
+ 'Hyundai Elite': 35,
+ 'Hyundai Getz': 36,
+ 'Hyundai Grand': 37,
+ 'Hyundai Santa': 38,
+ 'Hyundai Santro': 39,
+ 'Hyundai Verna': 40,
+ 'Hyundai Xcent': 41,
+ 'Hyundai i10': 42,
+ 'Hyundai i20': 43,
+ 'Jaguar XF': 44,
+ 'Jeep Compass': 45,
+ 'Land Rover': 46,
+ 'Mahindra Bolero': 47,
+ 'Mahindra KUV': 48,
+ 'Mahindra Scorpio': 49,
+ 'Mahindra Ssangyong': 50,
+ 'Mahindra XUV500': 51,
+ 'Mahindra Xylo': 52,
+ 'Maruti 800': 53,
+ 'Maruti A-Star': 54,
+ 'Maruti Alto': 55,
+ 'Maruti Baleno': 56,
+ 'Maruti Celerio': 57,
+ 'Maruti Ciaz': 58,
+ 'Maruti Dzire': 59,
+ 'Maruti Eeco': 60,
+ 'Maruti Ertiga': 61,
+ 'Maruti Omni': 62,
+ 'Maruti Ritz': 63,
+ 'Maruti SX4': 64,
+ 'Maruti Swift': 65,
+ 'Maruti Vitara': 66,
+ 'Maruti Wagon': 67,
+ 'Maruti Zen': 68,
+ 'Mercedes-Benz B': 69,
+ 'Mercedes-Benz CLA': 70,
+ 'Mercedes-Benz E-Class': 71,
+ 'Mercedes-Benz GL-Class': 72,
+ 'Mercedes-Benz GLA': 73,
+ 'Mercedes-Benz GLE': 74,
+ 'Mercedes-Benz M-Class': 75,
+ 'Mercedes-Benz New': 76,
+ 'Mercedes-Benz S': 77,
+ 'Mini Cooper': 78,
+ 'Mitsubishi Pajero': 79,
+ 'Nissan Micra': 80,
+ 'Nissan Sunny': 81,
+ 'Nissan Terrano': 82,
+ 'Renault Duster': 83,
+ 'Renault KWID': 84,
+ 'Skoda Fabia': 85,
+ 'Skoda Laura': 86,
+ 'Skoda Octavia': 87,
+ 'Skoda Rapid': 88,
+ 'Skoda Superb': 89,
+ 'Tata Indica': 90,
+ 'Tata Indigo': 91,
+ 'Tata Manza': 92,
+ 'Tata Nano': 93,
+ 'Tata Tiago': 94,
+ 'Tata Zest': 95,
+ 'Toyota Camry': 96,
+ 'Toyota Corolla': 97,
+ 'Toyota Etios': 98,
+ 'Toyota Fortuner': 99,
+ 'Toyota Innova': 100,
+ 'Volkswagen Ameo': 101,
+ 'Volkswagen Jetta': 102,
+ 'Volkswagen Polo': 103,
+ 'Volkswagen Vento': 104}
+
+dic_lc = {'Ahmedabad': 0,
+ 'Bangalore': 1,
+ 'Chennai': 2,
+ 'Coimbatore': 3,
+ 'Delhi': 4,
+ 'Hyderabad': 5,
+ 'Jaipur': 6,
+ 'Kochi': 7,
+ 'Kolkata': 8,
+ 'Mumbai': 9,
+ 'Pune': 10}
+
+dic_yr = {'2003': 0,
+ '2004': 1,
+ '2005': 2,
+ '2006': 3,
+ '2007': 4,
+ '2008': 5,
+ '2009': 6,
+ '2010': 7,
+ '2011': 8,
+ '2012': 9,
+ '2013': 10,
+ '2014': 11,
+ '2015': 12,
+ '2016': 13,
+ '2017': 14,
+ '2018': 15,
+ '2019': 16,
+ 'less than 2003': 17}
+
+dict_owner = {"First":1,"Second":2,"Third":3}
+dict_fuel = {"Petrol":1,"Diesel":2,"CNG":3}
+
+
+
+
+
+
+
+car = st.selectbox("Select Car Brand",('Audi A4','Audi A6','Audi Q3','Audi Q5','Audi Q7','BMW 3','BMW 5','BMW 7','BMW X1','BMW X3','BMW X5','Chevrolet Aveo','Chevrolet Beat','Chevrolet Cruze','Chevrolet Optra','Chevrolet Spark','Fiat Linea','Ford EcoSport','Ford Ecosport','Ford Endeavour','Ford Fiesta','Ford Figo',
+    'Ford Ikon',
+    'Honda Accord',
+    'Honda Amaze',
+    'Honda Brio',
+    'Honda CR-V',
+    'Honda City',
+    'Honda Civic',
+    'Honda Jazz',
+    'Honda Mobilio',
+    'Hyundai Accent',
+    'Hyundai Creta',
+    'Hyundai EON',
+    'Hyundai Elantra',
+    'Hyundai Elite',
+    'Hyundai Getz',
+    'Hyundai Grand',
+    'Hyundai Santa',
+    'Hyundai Santro',
+    'Hyundai Verna',
+    'Hyundai Xcent',
+    'Hyundai i10',
+    'Hyundai i20',
+    'Jaguar XF',
+    'Jeep Compass',
+    'Land Rover',
+    'Mahindra Bolero',
+    'Mahindra KUV',
+    'Mahindra Scorpio',
+    'Mahindra Ssangyong',
+    'Mahindra XUV500',
+    'Mahindra Xylo',
+    'Maruti 800',
+    'Maruti A-Star',
+    'Maruti Alto',
+    'Maruti Baleno',
+    'Maruti Celerio',
+    'Maruti Ciaz',
+    'Maruti Dzire',
+    'Maruti Eeco',
+    'Maruti Ertiga',
+    'Maruti Omni',
+    'Maruti Ritz',
+    'Maruti SX4',
+    'Maruti Swift',
+    'Maruti Vitara',
+    'Maruti Wagon',
+    'Maruti Zen',
+    'Mercedes-Benz B',
+    'Mercedes-Benz CLA',
+    'Mercedes-Benz E-Class',
+    'Mercedes-Benz GL-Class',
+    'Mercedes-Benz GLA',
+    'Mercedes-Benz GLE',
+    'Mercedes-Benz M-Class',
+    'Mercedes-Benz New',
+    'Mercedes-Benz S',
+    'Mini Cooper',
+    'Mitsubishi Pajero',
+    'Nissan Micra',
+    'Nissan Sunny',
+    'Nissan Terrano',
+    'Renault Duster',
+    'Renault KWID',
+    'Skoda Fabia',
+    'Skoda Laura',
+    'Skoda Octavia',
+    'Skoda Rapid',
+    'Skoda Superb',
+    'Tata Indica',
+    'Tata Indigo',
+    'Tata Manza',
+    'Tata Nano',
+    'Tata Tiago',
+    'Tata Zest',
+    'Toyota Camry',
+    'Toyota Corolla',
+    'Toyota Etios',
+    'Toyota Fortuner',
+    'Toyota Innova',
+    'Volkswagen Ameo',
+    'Volkswagen Jetta',
+    'Volkswagen Polo',
+    'Volkswagen Vento'))
+
+location = st.selectbox("Location",('Ahmedabad',
+
+    'Bangalore',
+    'Chennai',
+    'Coimbatore',
+    'Delhi',
+    'Hyderabad',
+    'Jaipur',
+    'Kochi',
+    'Kolkata',
+    'Mumbai',
+    'Pune'))
+year = st.selectbox("Year Model",('2010',
+    '2015',
+    '2011',
+    '2012',
+    '2013',
+    '2016',
+    '2018',
+    '2014',
+    '2017',
+    '2009',
+    '2008',
+    '2007',
+    '2006',
+    '2005',
+    '2019',
+    '2004',
+    'less than 2003',
+    '2003'))
+km = st.slider("Kilometers Driven(KM)",min_value=0,max_value=500000,step=100)
+#km = st.number_input("Kilometers Driven(KM)",min_value=0,max_value=500000,step=100)
+#owner = st.selectbox('Radio',['First', 'Second', 'Third'])
+owner = st.selectbox("Owner",('First', 'Second', 'Third'))
+ft = st.selectbox("Fuel Type",('Diesel', 'Petrol', 'CNG'))
+power = st.slider("Power HP (50-700)",min_value=10,max_value=700,step=5)
+st.write("Note: Please Enter power of car very accurately")
+#power = st.number_input("Power HP (50-700)",min_value=10,max_value=700,step=10)
+
+
+test_input2 = np.array([dict_car[car],dic_lc[location],dic_yr[year],km,dict_owner[owner],dict_fuel[ft],power],dtype=object).reshape(1,7)
+
+#test_input2 = np.array([car,location,year,km,owner,ft,power],dtype=object).reshape(1,7)
+rs = model.predict(test_input2)
+rs1=np.round(rs,2)
+
+#st.success('Price of car (lakh)  :  {} '.format(rs1[0]))
+result = st.button("Click to Predict Price")
+if result:
+    st.success('Price of Car (lakh)  :  {} '.format(rs1[0]))
+
+
+
+st.write("Made by Karan Chinchpure 💝" )
+
