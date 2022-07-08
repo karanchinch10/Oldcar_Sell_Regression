@@ -27,3 +27,7 @@ This Dataset contains total 12 features
 - Finally Build web application in python using streamlit library and then deploy the model 
 - <https://karanchinch10-oldcar-sell-streamlit-app-p6gwqq.streamlitapp.com/> works too. Must be used for explicit links.
 - Technical tools or library used --Python,numpy,pandas,sklearn,matplotllib,html,css,streamlit 
+- 
+  -  👉<a href="https://www.kaggle.com/code/karanchinchpure/predict-price-of-used-cars-regression-problem">View on Kaggle</a> 💝
+  -  👉<a href="#">View On Github</a> 💝
+
