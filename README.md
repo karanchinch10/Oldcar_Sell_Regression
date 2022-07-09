@@ -29,5 +29,5 @@ This Dataset contains total 12 features
 - Technical tools or library used --Python,numpy,pandas,sklearn,matplotllib,html,css,streamlit 
 - 
   -  👉<a href="https://www.kaggle.com/code/karanchinchpure/predict-price-of-used-cars-regression-problem">View on Kaggle</a> 💝
-  -  👉<a href="#">View On Github</a> 💝
+  -  👉<a href="https://github.com/karanchinch10/Oldcar_Sell_Regression/blob/main/predict-price-of-oldcars-regression-problem.ipynb">View On Github</a> 💝
 
