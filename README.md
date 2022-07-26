@@ -1,19 +1,34 @@
-#  Web Scraping | Housing Data | Mumbai 🏡
-## Web Scraping ?
-**Web scraping** is an automatic method to obtain **large amounts of data from websites**. Most of this data is **unstructured data** in an HTML format which is then converted into structured data in a **spreadsheet or a database** so that it can be used in various applications.
+#  Web Scraping 
+## Problem Statement:
 
-## Objective:
-* All **Important features** related to housing such as **house price, total sqft area, project by, location, BHK and so on** are collected by **web scraping**
-* To know Price of house for **differents location** in **mumbai** city 
-* All necessary **Hosuing data** to be scraped from website ***https://www.makaan.com*** by various techniques
-* Data from **250 pages scarpped and store in single dataframe**
-* Import Dataframe To Perform **EDA, Data cleaning and Data Visualization on Raw data** to understand important features and their correlation to with house price
-* Compare Price rate for different location BHK wise
-* Technical tools or library used --**Python, Numpy, Pandas, Beautifulsoup, Request, html, css** 
+
+![Semantic description of image](used_car.jpg "Image Title")
+## Content:
+This Dataset contains information of 5000+ old cars with different models and features like their Year, Name of the Company, KM driven, Power, Fuel Type and Location.
+This Dataset contains total 12 features
+- Name      
+- Location  
+- Year
+- Kilometers_Driven
+- Fuel_Type
+- Transmission
+- Owner_Type
+- Mileage
+- Engine
+- Power
+- Seats
+- Price
+## My Work:
+- I have made this model which will predict estimated price of old car base on thier features such as brand,KM drive,Power,Year and so on..
+- I have done stepwise EDA (Exploratory Data Analysis) then visualizatiion to get some idea about important features or correlation of each feature with output which dominates more to predict price
+- Then I have done Feature Engineering which inclueds features extraction & features construction based on my domian knowledge and visualization followed by label encoding 
+- I have train multiples ML models on same data in order to Analysed & compare performance of differents models based of accuracy and complexity
+- I have used all regression algorithms to train model and after comparing I got well accuracy by RandomForestRegressor after cross validation which was around 90%
+- Finally Build web application in python using streamlit library and then deploy the model 
+- <https://karanchinch10-oldcar-sell-streamlit-app-p6gwqq.streamlitapp.com/> works too. Must be used for explicit links.
+- Technical tools or library used --Python,numpy,pandas,sklearn,matplotllib,html,css,streamlit 
 - 
   -  👉<a href="https://www.kaggle.com/code/karanchinchpure/predict-price-of-used-cars-regression-problem">View on Kaggle</a> 💝
   -  👉<a href="https://github.com/karanchinch10/Oldcar_Sell_Regression/blob/main/predict-price-of-oldcars-regression-problem.ipynb">View On Github</a> 💝
-
-![Semantic description of image](https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/58549269/original/b11c5667c526a1c0be720f9aca49ac04ecea5326/create-web-scraper-web-crawler-and-bots-to-automate-task.png "House Web Scraping")
 
 
